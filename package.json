@@ -1,6 +1,6 @@
 {
   "name": "@tasiodev/react-places-autocomplete",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "author": {
     "name": "Tasio Español",
@@ -27,22 +27,23 @@
   "devDependencies": {
     "@babel/cli": "7.19.3",
     "@babel/core": "7.20.2",
+    "@babel/plugin-proposal-optional-chaining": "7.18.9",
     "@babel/plugin-transform-async-to-generator": "7.18.6",
     "@babel/plugin-transform-modules-umd": "7.18.6",
     "@babel/plugin-transform-runtime": "7.19.6",
-    "@babel/plugin-proposal-optional-chaining": "7.18.9",
     "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.20.2",
     "@babel/preset-react": "7.18.6",
     "@babel/preset-stage-2": "7.8.3",
     "@babel/runtime": "7.20.1",
+    "copyfiles": "^2.4.1",
     "node-sass": "9.0.0"
   },
   "scripts": {
     "prepare": "npm run build-js && npm run build-css && npm run copy-assets",
     "build-js": "babel src --ignore __tests__ --out-dir ./dist",
     "build-css": "node-sass src/assets/css/Field.module.css -o dist/assets/css --output-style compressed && node-sass src/assets/css/Gmap.module.css -o dist/assets/css --output-style compressed",
-    "copy-assets": "cp -R src/assets/svg dist/assets/svg"
+    "copy-assets": "npx copyfiles src/assets/svg/* dist/assets/svg -u 3"
   },
   "eslintConfig": {
     "extends": [
