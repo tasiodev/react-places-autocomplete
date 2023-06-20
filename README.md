@@ -70,7 +70,7 @@ function App() {
 
 
 #### customStyles example
-```json
+```javascript
 {
     container:{backGroundColor:'black'},
     field:{color:'red'},
