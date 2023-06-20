@@ -16,7 +16,6 @@ function Field ({
     language,
     disableMap,
     disabled,
-    showFullAddress,
     mapExpanded
 }) {
     const [loading, setLoading] = useState(false)
@@ -91,7 +90,7 @@ function Field ({
         setAllowSearch(false)
     }
 
-    const Gmaps = useMemo(() => <GMap address={placeSelected?.description || placeSelected?.formatted_address} gMapsKey={gMapsKey} showMap={showMap} language={language} />, [placeSelected, gMapsKey, showMap, language])
+    const Gmaps = useMemo(() => <GMap address={placeSelected?.description || placeSelected?.formatted_address} gMapsKey={gMapsKey} showMap={showMap} language={language} customStyles={customStyles} />, [placeSelected, gMapsKey, showMap, language, customStyles])
 
     return <div style={customStyles?.container} className={styles.container} ref={fieldRef}>
         <div style={customStyles?.field} className={styles.field}>
