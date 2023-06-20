@@ -1,0 +1,49 @@
+{
+  "name": "react-places-autocomplete",
+  "version": "0.1.0",
+  "private": false,
+  "dependencies": {
+    "@googlemaps/js-api-loader": "1.16.2"
+  },
+  "peerDependencies": {
+    "react": "^16 || ^17 || ^18",
+    "react-dom": "^16 || ^17 || ^18"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.19.3",
+    "@babel/core": "7.20.2",
+    "@babel/plugin-transform-async-to-generator": "7.18.6",
+    "@babel/plugin-transform-modules-umd": "7.18.6",
+    "@babel/plugin-transform-runtime": "7.19.6",
+    "@babel/plugin-proposal-optional-chaining": "7.18.9",
+    "@babel/polyfill": "7.12.1",
+    "@babel/preset-env": "7.20.2",
+    "@babel/preset-react": "7.18.6",
+    "@babel/preset-stage-2": "7.8.3",
+    "@babel/runtime": "7.20.1",
+    "node-sass": "9.0.0"
+  },
+  "scripts": {
+    "prepublish": "npm run build-js && npm run build-css",
+    "build-js": "babel src --ignore __tests__ --out-dir ./dist",
+    "build-css": "node-sass src/assets/css/Field.module.css -o dist/assets/css --output-style compressed && node-sass src/assets/css/Gmap.module.css -o dist/assets/css --output-style compressed"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

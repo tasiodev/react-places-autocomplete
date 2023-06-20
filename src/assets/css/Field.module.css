@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+}
+.container{
+    width: 100%;
+}
+.field{
+    position: relative;
+}
+.field>input{
+    width: 100%;
+    padding: 6px 10px;
+    padding-right: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.iconMarker{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%) scale(.9);
+    right:4px;
+    width: 20px;
+    height: 22px;
+    cursor: pointer;
+}
+.iconLoading{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    right:4px;
+    width: 20px;
+    height: 22px;
+    cursor: pointer;
+}
+.results{
+    box-shadow: 1px 1px 20px 4px #ccc;
+    font-size: 90%;
+    text-align: left;
+    border-radius: 3px;
+    max-height: 300px;
+    overflow: auto;
+}
+.results>div{
+    padding:4px 8px;
+    cursor: pointer;
+}
+.results>div:not(:last-child){
+    border-bottom: 1px solid #ccc;
+}
+.results>div:hover{
+    background-color: #efefef;
+}
