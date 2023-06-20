@@ -1,11 +1,17 @@
-*{
+
+.container{
+    width: 100%;
     box-sizing: border-box;
     border-width: 0;
     border-style: solid;
     border-color: #e5e7eb;
+    position: relative;
 }
-.container{
-    width: 100%;
+.container>*{
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
 }
 .field{
     position: relative;
@@ -36,12 +42,18 @@
     cursor: pointer;
 }
 .results{
-    box-shadow: 1px 1px 20px 4px #ccc;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    min-width: 300px;
+    box-shadow: 1px 1px 18px -6px #555;
     font-size: 90%;
     text-align: left;
     border-radius: 3px;
     max-height: 300px;
     overflow: auto;
+    z-index: 50;
+    background-color: white;
 }
 .results>div{
     padding:4px 8px;

@@ -1,5 +1,5 @@
 export function getGoogleMapsEmbedUrl (address, language) {
-    const zoom = 12000
+    const zoom = 4000
     const lang = language || 'en'
     return 'https://www.google.com/maps/embed?pb=' +
         '!1m18' +
@@ -19,7 +19,7 @@ export function getGoogleMapsEmbedUrl (address, language) {
         '!3m3' +
         '!1m2' +
         '!1s0' +
-        '!2s' + encodeURI('Juan Escutia, 09100 Ciudad de México, CDMX, México'?.toLowerCase()) +
+        '!2s' + encodeURI(address?.toLowerCase()) +
         '!5e0' +
         '!3m2' +
         '!1s' + lang +

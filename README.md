@@ -7,7 +7,7 @@ The place can be a city, a country, a street, or even an establishment.
 
 ## Demo
 
-Coming soon...
+https://react-places-autocomplete-demo.up.railway.app
 
 
 ## Features
@@ -72,12 +72,11 @@ function App() {
 #### customStyles example
 ```javascript
 {
-    container:{backGroundColor:'black'},
-    field:{color:'red'},
-    searchResultsContainer:{marginTop: 12},
-    searchResult:{padding: 6},
-    gmapContainer:{padding: 8},
-    gmapIframe:{heigth: 400}
+    container: { backgroundColor: 'black' },
+    fieldInput: { color: 'red' },
+    searchResultsContainer: { marginTop: 12 },
+    searchResult: { padding: 6 },
+    gmapContainer: { padding: 8, height: 400 },
 }
 ```
 

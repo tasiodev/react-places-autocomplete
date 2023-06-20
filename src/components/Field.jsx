@@ -2,8 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../assets/css/Field.module.css'
 import { getAutoCompletePlaces, getPlaceDetails } from '../actions/actions'
 import { useDebounce } from '../hooks/useDebounce'
-import loadingIcon from '../assets/svg/loading.svg'
-import markerIcon from '../assets/svg/marker.svg'
+import LoadingIcon from './icons/LoadingIcon'
+import MarkerIcon from './icons/MarkerIcon'
 import GMap from './GMap'
 function Field ({
     placeId,
@@ -82,18 +82,22 @@ function Field ({
     }, [placeSelected])
 
     const selectPlaceHandler = (place) => {
-        setPlaceSelected(place)
-        setShowMap(true)
-        setShowResults(false)
-        setSearchResults([])
-        setSearchTerm(place.description)
-        setAllowSearch(false)
+        setLoading(true)
+        getPlaceDetails(place.place_id, gMapsKey).then(res => {
+            setLoading(false)
+            setPlaceSelected(res)
+            setSearchTerm(res?.formatted_address)
+            setShowMap(true)
+            setShowResults(false)
+            setSearchResults([])
+            setAllowSearch(false)
+        })
     }
 
-    const Gmaps = useMemo(() => <GMap address={placeSelected?.description || placeSelected?.formatted_address} gMapsKey={gMapsKey} showMap={showMap} language={language} customStyles={customStyles} />, [placeSelected, gMapsKey, showMap, language, customStyles])
+    const Gmaps = useMemo(() => <GMap address={placeSelected?.description || placeSelected?.formatted_address} gMapsKey={gMapsKey} showMap={showMap} mapExpanded={mapExpanded} language={language} customStyles={customStyles} />, [placeSelected, gMapsKey, showMap, language, customStyles, mapExpanded])
 
     return <div style={customStyles?.container} className={styles.container} ref={fieldRef}>
-        <div style={customStyles?.field} className={styles.field}>
+        <div className={styles.field}>
             <input
                 onFocus={() => setShowResults(true)}
                 type='text'
@@ -101,9 +105,10 @@ function Field ({
                 value={searchTerm}
                 onChange={e => { setSearchTerm(e.target.value); setAllowSearch(true) }}
                 disabled={disabled}
+                style={customStyles?.fieldInput}
             />
-            {loading && <img style={customStyles?.iconLoading} className={styles.iconLoading} src={loadingIcon} alt='loading' />}
-            {!disableMap && !loading && placeSelected && <img onClick={() => setShowMap(!showMap)} style={customStyles?.iconMarker} className={styles.iconMarker} src={markerIcon} alt='marker' />}
+            {loading && <div style={customStyles?.iconLoading} className={styles.iconLoading}><LoadingIcon /></div>}
+            {!disableMap && !loading && placeSelected && !mapExpanded && <div onClick={() => setShowMap(!showMap)} style={customStyles?.iconMarker} className={styles.iconMarker}><MarkerIcon /></div>}
         </div>
         {searchResults.length !== 0 && showResults && <div style={customStyles?.searchResultsContainer} className={styles.results}>
             {searchResults.map(result => <div key={result.place_id} style={customStyles?.searchResult} onClick={() => selectPlaceHandler(result)}>

@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["exports", "@babel/runtime/helpers/slicedToArray", "react", "../assets/css/Field.module.css", "../actions/actions", "../hooks/useDebounce", "../assets/svg/loading.svg", "../assets/svg/marker.svg", "./GMap", "react/jsx-runtime"], factory);
+    define(["exports", "@babel/runtime/helpers/slicedToArray", "react", "../assets/css/Field.module.css", "../actions/actions", "../hooks/useDebounce", "./icons/LoadingIcon", "./icons/MarkerIcon", "./GMap", "react/jsx-runtime"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require("@babel/runtime/helpers/slicedToArray"), require("react"), require("../assets/css/Field.module.css"), require("../actions/actions"), require("../hooks/useDebounce"), require("../assets/svg/loading.svg"), require("../assets/svg/marker.svg"), require("./GMap"), require("react/jsx-runtime"));
+    factory(exports, require("@babel/runtime/helpers/slicedToArray"), require("react"), require("../assets/css/Field.module.css"), require("../actions/actions"), require("../hooks/useDebounce"), require("./icons/LoadingIcon"), require("./icons/MarkerIcon"), require("./GMap"), require("react/jsx-runtime"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.slicedToArray, global.react, global.FieldModule, global.actions, global.useDebounce, global.loading, global.marker, global.GMap, global.jsxRuntime);
+    factory(mod.exports, global.slicedToArray, global.react, global.FieldModule, global.actions, global.useDebounce, global.LoadingIcon, global.MarkerIcon, global.GMap, global.jsxRuntime);
     global.Field = mod.exports;
   }
-})(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this, function (_exports, _slicedToArray2, _react, _FieldModule, _actions, _useDebounce, _loading, _marker, _GMap, _jsxRuntime) {
+})(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this, function (_exports, _slicedToArray2, _react, _FieldModule, _actions, _useDebounce, _LoadingIcon, _MarkerIcon, _GMap, _jsxRuntime) {
   "use strict";
 
   var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -20,8 +20,8 @@
   _exports.default = void 0;
   _slicedToArray2 = _interopRequireDefault(_slicedToArray2);
   _FieldModule = _interopRequireDefault(_FieldModule);
-  _loading = _interopRequireDefault(_loading);
-  _marker = _interopRequireDefault(_marker);
+  _LoadingIcon = _interopRequireDefault(_LoadingIcon);
+  _MarkerIcon = _interopRequireDefault(_MarkerIcon);
   _GMap = _interopRequireDefault(_GMap);
   function Field(_ref) {
     var placeId = _ref.placeId,
@@ -115,28 +115,32 @@
       setShowResults(false);
     }, [placeSelected]);
     var selectPlaceHandler = function selectPlaceHandler(place) {
-      setPlaceSelected(place);
-      setShowMap(true);
-      setShowResults(false);
-      setSearchResults([]);
-      setSearchTerm(place.description);
-      setAllowSearch(false);
+      setLoading(true);
+      (0, _actions.getPlaceDetails)(place.place_id, gMapsKey).then(function (res) {
+        setLoading(false);
+        setPlaceSelected(res);
+        setSearchTerm(res === null || res === void 0 ? void 0 : res.formatted_address);
+        setShowMap(true);
+        setShowResults(false);
+        setSearchResults([]);
+        setAllowSearch(false);
+      });
     };
     var Gmaps = (0, _react.useMemo)(function () {
       return /*#__PURE__*/(0, _jsxRuntime.jsx)(_GMap.default, {
         address: (placeSelected === null || placeSelected === void 0 ? void 0 : placeSelected.description) || (placeSelected === null || placeSelected === void 0 ? void 0 : placeSelected.formatted_address),
         gMapsKey: gMapsKey,
         showMap: showMap,
+        mapExpanded: mapExpanded,
         language: language,
         customStyles: customStyles
       });
-    }, [placeSelected, gMapsKey, showMap, language, customStyles]);
+    }, [placeSelected, gMapsKey, showMap, language, customStyles, mapExpanded]);
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: customStyles === null || customStyles === void 0 ? void 0 : customStyles.container,
       className: _FieldModule.default.container,
       ref: fieldRef,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: customStyles === null || customStyles === void 0 ? void 0 : customStyles.field,
         className: _FieldModule.default.field,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
           onFocus: function onFocus() {
@@ -149,20 +153,19 @@
             setSearchTerm(e.target.value);
             setAllowSearch(true);
           },
-          disabled: disabled
-        }), loading && /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+          disabled: disabled,
+          style: customStyles === null || customStyles === void 0 ? void 0 : customStyles.fieldInput
+        }), loading && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           style: customStyles === null || customStyles === void 0 ? void 0 : customStyles.iconLoading,
           className: _FieldModule.default.iconLoading,
-          src: _loading.default,
-          alt: "loading"
-        }), !disableMap && !loading && placeSelected && /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_LoadingIcon.default, {})
+        }), !disableMap && !loading && placeSelected && !mapExpanded && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           onClick: function onClick() {
             return setShowMap(!showMap);
           },
           style: customStyles === null || customStyles === void 0 ? void 0 : customStyles.iconMarker,
           className: _FieldModule.default.iconMarker,
-          src: _marker.default,
-          alt: "marker"
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_MarkerIcon.default, {})
         })]
       }), searchResults.length !== 0 && showResults && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         style: customStyles === null || customStyles === void 0 ? void 0 : customStyles.searchResultsContainer,

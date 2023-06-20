@@ -23,6 +23,7 @@
     var gMapsKey = _ref.gMapsKey,
       address = _ref.address,
       showMap = _ref.showMap,
+      mapExpanded = _ref.mapExpanded,
       language = _ref.language,
       customStyles = _ref.customStyles;
     var Iframe = (0, _react.useMemo)(function () {
@@ -30,18 +31,16 @@
         id: showMap ? 'addressFieldMapExpanded' : 'addressFieldMap',
         title: "google-map",
         src: (0, _helpers.getGoogleMapsEmbedUrl)(address, language),
-        width: "400",
-        height: "400",
         frameBorder: "0",
         allowFullScreen: true,
-        style: customStyles.gmapIframe
+        style: customStyles === null || customStyles === void 0 ? void 0 : customStyles.gmapIframe
       });
     }, [address, language]);
     return address && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: _GMapModule.default.gmapContainer,
-      style: customStyles.gmapContainer,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: "".concat(_GMapModule.default.gmap, " ").concat(!address || !showMap ? _GMapModule.default.hidden : _GMapModule.default.expanded),
+        style: customStyles === null || customStyles === void 0 ? void 0 : customStyles.gmapContainer,
+        className: "".concat(mapExpanded ? _GMapModule.default.gmapFixed : _GMapModule.default.gmap, " ").concat(!address || !showMap ? _GMapModule.default.hidden : _GMapModule.default.expanded),
         children: Iframe
       })
     });
