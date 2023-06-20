@@ -23,7 +23,8 @@
     var gMapsKey = _ref.gMapsKey,
       address = _ref.address,
       showMap = _ref.showMap,
-      language = _ref.language;
+      language = _ref.language,
+      customStyles = _ref.customStyles;
     var Iframe = (0, _react.useMemo)(function () {
       return address && /*#__PURE__*/(0, _jsxRuntime.jsx)("iframe", {
         id: showMap ? 'addressFieldMapExpanded' : 'addressFieldMap',
@@ -32,11 +33,13 @@
         width: "400",
         height: "400",
         frameBorder: "0",
-        allowFullScreen: true
+        allowFullScreen: true,
+        style: customStyles.gmapIframe
       });
     }, [address, language]);
     return address && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: _GMapModule.default.gmapContainer,
+      style: customStyles.gmapContainer,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: "".concat(_GMapModule.default.gmap, " ").concat(!address || !showMap ? _GMapModule.default.hidden : _GMapModule.default.expanded),
         children: Iframe

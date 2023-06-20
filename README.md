@@ -42,7 +42,7 @@ import { useState } from 'react'
 import PlacesPicker from '@tasiodev/react-places-autocomplete'
 
 function App() {
-  const [value, setValue] = useState('ChIJDUgjniSipBIRUHS4p3t99uk')
+  const [value, setValue] = useState(null)
   return  <PlacesPicker
         gMapsKey='*******************'
         placeId={value}

@@ -34,7 +34,6 @@
       language = _ref.language,
       disableMap = _ref.disableMap,
       disabled = _ref.disabled,
-      showFullAddress = _ref.showFullAddress,
       mapExpanded = _ref.mapExpanded;
     var _useState = (0, _react.useState)(false),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -128,9 +127,10 @@
         address: (placeSelected === null || placeSelected === void 0 ? void 0 : placeSelected.description) || (placeSelected === null || placeSelected === void 0 ? void 0 : placeSelected.formatted_address),
         gMapsKey: gMapsKey,
         showMap: showMap,
-        language: language
+        language: language,
+        customStyles: customStyles
       });
-    }, [placeSelected, gMapsKey, showMap, language]);
+    }, [placeSelected, gMapsKey, showMap, language, customStyles]);
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: customStyles === null || customStyles === void 0 ? void 0 : customStyles.container,
       className: _FieldModule.default.container,
