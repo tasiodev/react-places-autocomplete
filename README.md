@@ -61,7 +61,7 @@ function App() {
 | `onChange` | `func` | Event triggered when user select a place or when user starts typing to search a place  |
 | `onSelectPlace` | `func` | Event triggered when user select a place |
 | `placeholder` | `string` | Placeholder for input |
-| `searchTypes` | `array[string]` | Limit the place types return in a search. See: https://developers.google.com/maps/documentation/places/web-service/supported_types?hl=es-419 |
+| `searchTypes` | `array[string]` | Limit the place types return in a search. See: https://developers.google.com/maps/documentation/places/web-service/supported_types |
 | `language` | `string` | ISO code for map and results language. Default: "en" |
 | `disableMap` | `bool` | Boolean to disable place Map. Default: false |
 | `mapExpanded` | `bool` | If true, the map is always visible. Default: false |
