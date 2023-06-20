@@ -1,7 +1,22 @@
 {
-  "name": "react-places-autocomplete",
-  "version": "0.1.0",
+  "name": "@tasiodev/react-places-autocomplete",
+  "version": "0.1.1",
   "private": false,
+  "author": {
+    "name": "Tasio Español",
+    "email": "tasio.e@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tasiodev/react-places-autocomplete"
+  },
+  "keywords": [
+    "google maps",
+    "places",
+    "autocomplete",
+    "picker",
+    "dropdown"
+  ],
   "dependencies": {
     "@googlemaps/js-api-loader": "1.16.2"
   },
