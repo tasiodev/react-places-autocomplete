@@ -1,6 +1,6 @@
 {
   "name": "@tasiodev/react-places-autocomplete",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "author": {
     "name": "Tasio Español",
@@ -39,9 +39,10 @@
     "node-sass": "9.0.0"
   },
   "scripts": {
-    "prepublish": "npm run build-js && npm run build-css",
+    "prepare": "npm run build-js && npm run build-css && npm run copy-assets",
     "build-js": "babel src --ignore __tests__ --out-dir ./dist",
-    "build-css": "node-sass src/assets/css/Field.module.css -o dist/assets/css --output-style compressed && node-sass src/assets/css/Gmap.module.css -o dist/assets/css --output-style compressed"
+    "build-css": "node-sass src/assets/css/Field.module.css -o dist/assets/css --output-style compressed && node-sass src/assets/css/Gmap.module.css -o dist/assets/css --output-style compressed",
+    "copy-assets": "cp -R src/assets/svg dist/assets/svg"
   },
   "eslintConfig": {
     "extends": [
