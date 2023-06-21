@@ -84,5 +84,3 @@ function App() {
     gmapContainer: { padding: 8, height: 400 },
 }
 ```
-
-
