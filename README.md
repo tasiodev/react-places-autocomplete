@@ -5,6 +5,8 @@ Component used as a field in a form to autocomplete a place, using the Google Ma
 
 The place can be a city, a country, a street, or even an establishment.
 
+![alt text](https://gyazo.com/9d2aa7d47b8f18e8cd89f4e3bf072238)
+
 
 ## Demo
 
