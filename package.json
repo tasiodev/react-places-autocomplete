@@ -1,9 +1,9 @@
 {
   "name": "@tasiodev/react-places-autocomplete",
-  "version": "0.1.9",
+  "version": "1.0.0",
   "private": false,
   "author": {
-    "name": "Tasio Español",
+    "name": "tasiodev",
     "email": "tasio.e@gmail.com"
   },
   "repository": {
