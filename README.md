@@ -22,7 +22,7 @@ https://react-places-autocomplete-demo.up.railway.app
 
 ## Requisites
 
-To use this component, you will need a Google API key. Here is more information on how to obtain it: https://support.google.com/googleapi/answer/6158862
+To use this component, you will need a Google API key. Here is more information on how to obtain it: https://developers.google.com/maps/documentation/javascript/get-api-key
 
 You will also need to enable these two APIs:
 - Places API
@@ -32,7 +32,7 @@ Exposing your API key in the front-end code of your application can pose signifi
 
 Is highly recommended to store it in a separate configuration file, such as the .env file.
 
-Additionally, we strongly recommend that you restrict the usage of your API key using the available configuration options. https://cloud.google.com/api-keys/docs/add-restrictions-api-keys
+Additionally, we strongly recommend that you restrict the usage of your API key using the available configuration options. https://developers.google.com/maps/api-security-best-practices#restrict_apikey
 
 
 ## Installation and Basic Example
