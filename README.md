@@ -5,6 +5,7 @@ Component used as a field in a form to autocomplete a place, using the Google Ma
 
 The place can be a city, a country, a street, or even an establishment.
 
+
 ## Demo
 
 https://react-places-autocomplete-demo.up.railway.app
@@ -18,7 +19,8 @@ https://react-places-autocomplete-demo.up.railway.app
 
 
 ## Requisites
-To use this component, you will need a Google API key. Here is more information on how to obtain it: https://support.google.com/googleapi/answer/6158862?hl=en
+
+To use this component, you will need a Google API key. Here is more information on how to obtain it: https://support.google.com/googleapi/answer/6158862
 
 You will also need to enable these two APIs:
 - Places API
@@ -50,6 +52,7 @@ function App() {
       />
 }
 ```
+
 ## Props Reference
 
 ####  <PlacesPicker />
