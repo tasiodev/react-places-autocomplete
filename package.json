@@ -1,6 +1,6 @@
 {
   "name": "@tasiodev/react-places-autocomplete",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "author": {
     "name": "tasiodev",
@@ -49,7 +49,7 @@
   "scripts": {
     "prepare": "npm run build-js && npm run build-css",
     "build-js": "babel src --ignore __tests__ --out-dir ./dist",
-    "build-css": "node-sass src/assets/css/Field.module.css -o dist/assets/css --output-style compressed && node-sass src/assets/css/Gmap.module.css -o dist/assets/css --output-style compressed"
+    "build-css": "node-sass src/assets/css/Field.module.css -o dist/assets/css --output-style compressed && node-sass src/assets/css/GMap.module.css -o dist/assets/css --output-style compressed"
   },
   "eslintConfig": {
     "extends": [
