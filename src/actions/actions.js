@@ -12,11 +12,12 @@ export async function getAutoCompletePlaces (search, types, language = 'en', api
     }))
 }
 
-export function getPlaceDetails (placeId, apiKey) {
+export function getPlaceDetails (placeId, language = 'en', apiKey) {
     if (!apiKey) return Promise.reject(new Error('[react-address-field] Missing Google Maps API key'))
     loader.apiKey = apiKey
     const request = {
         placeId,
+        language,
         fields: ['formatted_address', 'name', 'place_id']
     }
     return new Promise(resolve => loader.load().then((google) => {

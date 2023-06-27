@@ -49,7 +49,7 @@ function Field ({
     useEffect(() => {
         if (placeId && !placeSelected) {
             setLoading(true)
-            getPlaceDetails(placeId, gMapsKey).then(res => {
+            getPlaceDetails(placeId, language, gMapsKey).then(res => {
                 setLoading(false)
                 setPlaceSelected(res)
                 setSearchTerm(res?.formatted_address)
@@ -83,7 +83,7 @@ function Field ({
 
     const selectPlaceHandler = (place) => {
         setLoading(true)
-        getPlaceDetails(place.place_id, gMapsKey).then(res => {
+        getPlaceDetails(place.place_id, language, gMapsKey).then(res => {
             setLoading(false)
             setPlaceSelected(res)
             setSearchTerm(res?.formatted_address)
