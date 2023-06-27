@@ -1,6 +1,6 @@
 import { Loader } from '@googlemaps/js-api-loader'
 const loader = new Loader({ version: 'weekly', libraries: ['places'] })
-export async function getAutoCompletePlaces (search, types, language, apiKey) {
+export async function getAutoCompletePlaces (search, types, language = 'en', apiKey) {
     if (!apiKey) return Promise.reject(new Error('[react-address-field] Missing Google Maps API key'))
     loader.apiKey = apiKey
     return new Promise(resolve => loader.load().then((google) => {
