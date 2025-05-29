@@ -21,8 +21,8 @@
     "@googlemaps/js-api-loader": "1.16.2"
   },
   "peerDependencies": {
-    "react": "^16 || ^17 || ^18",
-    "react-dom": "^16 || ^17 || ^18"
+    "react": "^16 || ^17 || ^18 || ^19",
+    "react-dom": "^16 || ^17 || ^18 || ^19"
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",
