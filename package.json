@@ -1,6 +1,6 @@
 {
   "name": "@tasiodev/react-places-autocomplete",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "private": false,
   "author": {
     "name": "tasiodev",
@@ -18,25 +18,27 @@
     "dropdown"
   ],
   "dependencies": {
-    "@googlemaps/js-api-loader": "1.16.2"
+    "@googlemaps/js-api-loader": "1.16.2",
+    "@babel/runtime": "^7.20.1",
+    "core-js": "^3.37.0"
   },
   "peerDependencies": {
-    "react": "^16 || ^17 || ^18",
-    "react-dom": "^16 || ^17 || ^18"
+    "react": "^16 || ^17 || ^18 || ^19",
+    "react-dom": "^16 || ^17 || ^18 || ^19"
   },
   "devDependencies": {
-    "@babel/cli": "7.19.3",
-    "@babel/core": "7.20.2",
-    "@babel/plugin-proposal-optional-chaining": "7.18.9",
-    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
-    "@babel/plugin-transform-async-to-generator": "7.18.6",
-    "@babel/plugin-transform-modules-umd": "7.18.6",
-    "@babel/plugin-transform-runtime": "7.19.6",
-    "@babel/polyfill": "7.12.1",
-    "@babel/preset-env": "7.20.2",
-    "@babel/preset-react": "7.18.6",
+    "@babel/cli": "^7.24.4",
+    "@babel/core": "^7.24.4",
+    "@babel/plugin-transform-async-to-generator": "^7.24.4",
+    "@babel/plugin-transform-modules-umd": "^7.24.4",
+    "@babel/plugin-transform-runtime": "^7.24.4",
+    "@babel/plugin-transform-optional-chaining": "^7.24.4",
+    "@babel/plugin-transform-private-property-in-object": "^7.24.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-react": "^7.24.4",
     "@babel/preset-stage-2": "7.8.3",
-    "@babel/runtime": "7.20.1",
     "copyfiles": "^2.4.1",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
@@ -44,12 +46,12 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-promise": "^6.4.0",
     "eslint-plugin-react": "^7.35.0",
-    "node-sass": "9.0.0"
+    "sass": "^1.77.4"
   },
   "scripts": {
-    "prepare": "npm run build-js && npm run build-css",
-    "build-js": "babel src --ignore __tests__ --out-dir ./dist",
-    "build-css": "node-sass src/assets/css/Field.module.css -o dist/assets/css --output-style compressed && node-sass src/assets/css/GMap.module.css -o dist/assets/css --output-style compressed"
+    "prepare": "npm run build-js && npm run build-css && copy src\\index.d.ts dist\\index.d.ts",
+    "build-js": "npx babel src --ignore __tests__ --out-dir ./dist",
+    "build-css": "npx sass src/assets/css/Field.module.css:dist/assets/css/Field.module.css --style=compressed && npx sass src/assets/css/GMap.module.css:dist/assets/css/GMap.module.css --style=compressed"
   },
   "eslintConfig": {
     "extends": [
@@ -68,5 +70,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
 }
