@@ -20,12 +20,21 @@ https://react-places-autocomplete-demo.up.railway.app
 - Fully customizable
 
 
+## Migrating from v1 to v2
+
+Version 2.0.0 migrates from the deprecated `google.maps.places.AutocompleteService` to the new `google.maps.places.AutocompleteSuggestion` API.
+
+**Required change in Google Cloud Console:** you must enable the **Places API (New)** in addition to (or instead of) the legacy Places API. Without this, autocomplete suggestions will not work after upgrading.
+
+See the official migration guide: https://developers.google.com/maps/documentation/javascript/places-migration-overview
+
+
 ## Requisites
 
 To use this component, you will need a Google API key. Here is more information on how to obtain it: https://developers.google.com/maps/documentation/javascript/get-api-key
 
-You will also need to enable these two APIs:
-- Places API
+You will also need to enable these APIs in Google Cloud Console:
+- **Places API (New)** ← required from v2.0.0
 - Maps JavaScript API
 
 Exposing your API key in the front-end code of your application can pose significant security risks. Unauthorized access to your API key may lead to unauthorized usage.
